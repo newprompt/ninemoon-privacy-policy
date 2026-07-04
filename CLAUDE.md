@@ -11,6 +11,7 @@ Páginas **HTML estáticas** exigidas pelas lojas (App Store + Google Play) e pe
 - [`index.html`](index.html) — política de privacidade (página principal publicada — raiz do GitHub Pages).
 - [`9moon-privacy-policy.html`](9moon-privacy-policy.html) — **cópia byte a byte** do `index.html` (URL nomeada usada nas fichas das lojas). ⚠ Toda edição em um vale para o outro — editar os dois e conferir com `diff index.html 9moon-privacy-policy.html` (deve retornar vazio).
 - [`excluir-conta.html`](excluir-conta.html) — página de **exclusão de conta** (exigência da Google Play / Apple). Linkada do app e da ficha da loja.
+- [`termos-de-uso.html`](termos-de-uso.html) — **Termos de Uso** (elegibilidade, aviso médico, propriedade intelectual, limitação de responsabilidade). Linkado do app (rodapé do Perfil) e da landing (`9moon-landing`).
 
 **Sem build, sem framework, sem dependências.** HTML + CSS inline. Não há `package.json`, não há toolchain.
 
