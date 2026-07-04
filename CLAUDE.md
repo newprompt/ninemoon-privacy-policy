@@ -21,6 +21,7 @@ Páginas **HTML estáticas** exigidas pelas lojas (App Store + Google Play) e pe
 
 - **Conteúdo jurídico** — alterar texto de política só com intenção clara. Não reescrever cláusula sem o dono pedir.
 - **pt-BR**, tom formal, consistente entre as três páginas (nome do app, contato, datas).
+- **Versionamento (desde v1.0, 2026-07-04)**: toda mudança de conteúdo relevante em `index.html`/`9moon-privacy-policy.html`/`termos-de-uso.html` incrementa o `<strong>Versão:</strong>` no bloco `.meta` (semver simples: X.Y) e atualiza a data de "última atualização" logo abaixo. O backend (`9moon-backend`, tabela `legal_documents`) e o app usam esse número pra decidir se pedem novo aceite — não pular o bump.
 - Ao mudar política, **atualizar a data de "última atualização"** na página.
 - Mexeu no fluxo de exclusão de conta no app/backend? Conferir se `excluir-conta.html` continua coerente (passos, prazo, contato).
 - Manter os arquivos **autocontidos** (CSS inline / mesma pasta) — devem abrir direto no navegador e em hospedagem estática simples.
