@@ -1,30 +1,33 @@
-# NineMoon — Privacy Policy / Policy das lojas
+# NineMoon — Privacy Policy / Policy das lojas (agora: redirect)
 
-Páginas **HTML estáticas** exigidas pelas lojas (App Store + Google Play) e pelo fluxo de exclusão de conta do app 9moon.
+**Este repo não hospeda mais conteúdo jurídico.** Desde 2026-07-06, cada página aqui é um **stub de redirect** pro domínio próprio (`ninemoon.com.br`), onde o conteúdo (Política de Privacidade, Termos de Uso, Exclusão de Conta, Termos de Uso Profissional) vive de fato — repo `9moon-landing`.
 
 > Contexto do ecossistema: [`../CLAUDE.md`](../CLAUDE.md).
 
 ---
 
-## O que tem aqui
+## Por que ainda existe
 
-- [`index.html`](index.html) — política de privacidade (página principal publicada — raiz do GitHub Pages).
-- [`9moon-privacy-policy.html`](9moon-privacy-policy.html) — **cópia byte a byte** do `index.html` (URL nomeada usada nas fichas das lojas). ⚠ Toda edição em um vale para o outro — editar os dois e conferir com `diff index.html 9moon-privacy-policy.html` (deve retornar vazio).
-- [`excluir-conta.html`](excluir-conta.html) — página de **exclusão de conta** (exigência da Google Play / Apple). Linkada do app e da ficha da loja.
-- [`termos-de-uso.html`](termos-de-uso.html) — **Termos de Uso** (elegibilidade, aviso médico, propriedade intelectual, limitação de responsabilidade). Linkado do app (rodapé do Perfil) e da landing (`9moon-landing`).
-- [`termos-profissional.html`](termos-profissional.html) — **Termos de Uso Profissional** (2026-07-04): confidencialidade, sigilo, uso finalístico do painel, responsabilidade pela exatidão do prontuário. Linkado do painel `ninemoon-admin-web` (aceite no primeiro login da médica).
+O build **1.0.11** do app (já publicado nas lojas) tem as URLs `newprompt.github.io/ninemoon-privacy-policy/...` **hardcoded** em `sign_up_screen`, `privacy_security_screen` e `profile_screen`. Não dá pra mudar retroativo — então este domínio (GitHub Pages) **tem que continuar respondendo pra sempre**, redirecionando pro domínio novo. Não deletar o repo.
 
-**Sem build, sem framework, sem dependências.** HTML + CSS inline. Não há `package.json`, não há toolchain.
+## O que tem aqui (stubs de redirect)
 
----
+| Arquivo | Redireciona para |
+|---|---|
+| [`index.html`](index.html) | `https://ninemoon.com.br/privacidade` |
+| [`9moon-privacy-policy.html`](9moon-privacy-policy.html) | `https://ninemoon.com.br/privacidade` |
+| [`termos-de-uso.html`](termos-de-uso.html) | `https://ninemoon.com.br/termos` |
+| [`excluir-conta.html`](excluir-conta.html) | `https://ninemoon.com.br/excluir-conta` |
+| [`termos-profissional.html`](termos-profissional.html) | `https://ninemoon.com.br/termos-profissional` |
+
+Cada stub tem: `<meta http-equiv="refresh">` (redirect imediato, funciona sem JS), `<link rel="canonical">` (SEO), `<script>location.replace(...)</script>` (redirect via JS, sem poluir o histórico do navegador) e um `<body>` mínimo com link "clique aqui" de fallback visível.
+
+**Sem build, sem framework, sem dependências.** HTML autocontido, CSS inline mínimo.
 
 ## Regras
 
-- **Conteúdo jurídico** — alterar texto de política só com intenção clara. Não reescrever cláusula sem o dono pedir.
-- **pt-BR**, tom formal, consistente entre as três páginas (nome do app, contato, datas).
-- **Versionamento (desde v1.0, 2026-07-04)**: toda mudança de conteúdo relevante em `index.html`/`9moon-privacy-policy.html`/`termos-de-uso.html`/`termos-profissional.html` incrementa o `<strong>Versão:</strong>` no bloco `.meta` (semver simples: X.Y) e atualiza a data de "última atualização" logo abaixo. O backend (`9moon-backend`, tabela `legal_documents`) e o app/painel usam esse número pra decidir se pedem novo aceite — não pular o bump.
-- Ao mudar política, **atualizar a data de "última atualização"** na página.
-- Mexeu no fluxo de exclusão de conta no app/backend? Conferir se `excluir-conta.html` continua coerente (passos, prazo, contato).
-- Manter os arquivos **autocontidos** (CSS inline / mesma pasta) — devem abrir direto no navegador e em hospedagem estática simples.
+- **Não editar conteúdo jurídico aqui** — a fonte única agora é `9moon-landing` (`privacidade.html`, `termos.html`, `excluir-conta.html`, `termos-profissional.html`). Mudança de texto legal vai lá, não aqui.
+- **Não apagar este repo nem os arquivos** — builds antigos do app dependem das URLs continuarem resolvendo.
+- Se o domínio de destino (`ninemoon.com.br`) mudar de novo no futuro, atualizar as 5 URLs de redirect aqui.
 - **Conventional Commits**; commit direto em `main` permitido (solo).
-- Não introduzir tracker, script externo ou fonte remota sem necessidade — é página de privacidade, manter limpa.
+- Ver [`../docs/PLANO_MIGRACAO_PAGINAS_LEGAIS.md`](../docs/PLANO_MIGRACAO_PAGINAS_LEGAIS.md) pro histórico completo da migração.
